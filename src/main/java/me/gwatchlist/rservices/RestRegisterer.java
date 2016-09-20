@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
+ *
  * Created by giovanni on 19/08/16.
  */
 public class RestRegisterer extends Application {
@@ -16,6 +17,7 @@ public class RestRegisterer extends Application {
 
         // Register REST Services
         classes.add(HelloService.class);
+        classes.add(UserRService.class);
 
         return classes;
     }
