@@ -1,5 +1,7 @@
 package me.gwatchlist.rservices;
 
+import me.gwatchlist.config.CORSFilter;
+
 import javax.ws.rs.core.Application;
 import java.util.HashSet;
 import java.util.Set;
@@ -16,6 +18,7 @@ public class RestRegisterer extends Application {
         Set<Class<?>> classes = new HashSet<Class<?>>();
 
         // Register REST Services
+        classes.add(CORSFilter.class);
         classes.add(HelloService.class);
         classes.add(UserRService.class);
 
