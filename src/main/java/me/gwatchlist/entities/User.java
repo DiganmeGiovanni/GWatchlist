@@ -4,7 +4,6 @@ import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 import com.googlecode.objectify.annotation.Index;
 
-import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
 
 /**
@@ -24,6 +23,7 @@ public class User {
     @Index
     private Date createdAt;
     private Date lastLoginAt;
+    private int loginCount;
 
 
     ////////////////////////////////////////////////////////////////////////////
@@ -67,5 +67,13 @@ public class User {
 
     public void setLastLoginAt(Date lastLoginAt) {
         this.lastLoginAt = lastLoginAt;
+    }
+
+    public int getLoginCount() {
+        return loginCount;
+    }
+
+    public void setLoginCount(int loginCount) {
+        this.loginCount = loginCount;
     }
 }

@@ -30,6 +30,7 @@ public class UserService {
         // Updates name and last login date
         user.setName(name);
         user.setLastLoginAt(new Date());
+        user.setLoginCount(user.getLoginCount() + 1);
 
         ofy().save().entity(user);
         return user;
