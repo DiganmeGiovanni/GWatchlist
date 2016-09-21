@@ -2,6 +2,7 @@ package me.gwatchlist.services;
 
 import com.googlecode.objectify.ObjectifyService;
 import me.gwatchlist.entities.User;
+import me.gwatchlist.entities.UserPreferences;
 
 import java.util.Date;
 
@@ -32,8 +33,22 @@ public class UserService {
         user.setLastLoginAt(new Date());
         user.setLoginCount(user.getLoginCount() + 1);
 
+        // Create default preferences if necessary
+        if (user.getPreferences() == null) {
+            this.createDefaultPreferences(user);
+        }
+
         ofy().save().entity(user);
         return user;
+    }
+
+    private void createDefaultPreferences(User user) {
+        UserPreferences preferences = new UserPreferences();
+        preferences.setNotifyOnListShared(true);
+        preferences.setNotifyOnMovieAdded(true);
+        preferences.setTheme(UserPreferences.THEME_DARK_BLUE);
+
+        user.setPreferences(preferences);
     }
 
     private User findByEmail(String email) {

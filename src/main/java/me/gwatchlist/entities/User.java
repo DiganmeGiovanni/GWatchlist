@@ -25,6 +25,7 @@ public class User {
     private Date lastLoginAt;
     private int loginCount;
 
+    private UserPreferences preferences;
 
     ////////////////////////////////////////////////////////////////////////////
     // Setters and getters
@@ -75,5 +76,13 @@ public class User {
 
     public void setLoginCount(int loginCount) {
         this.loginCount = loginCount;
+    }
+
+    public UserPreferences getPreferences() {
+        return preferences;
+    }
+
+    public void setPreferences(UserPreferences preferences) {
+        this.preferences = preferences;
     }
 }
