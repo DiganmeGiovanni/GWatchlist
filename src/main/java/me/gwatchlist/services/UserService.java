@@ -59,4 +59,23 @@ public class UserService {
                 .first()
                 .now();
     }
+
+    public User updatePreferences(String email, boolean notifyOnListShared,
+                                  boolean notifyOnMovieAdded, String theme) {
+
+        // Retrieve user
+        User user = this.findByEmail(email);
+        if (user != null) {
+            UserPreferences preferences = user.getPreferences();
+            preferences.setNotifyOnListShared(notifyOnListShared);
+            preferences.setNotifyOnMovieAdded(notifyOnMovieAdded);
+            preferences.setTheme(theme);
+
+            user.setPreferences(preferences);
+            ofy().save().entity(user);
+            return user;
+        }
+
+        return null;
+    }
 }
