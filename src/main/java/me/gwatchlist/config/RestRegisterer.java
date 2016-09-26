@@ -1,5 +1,9 @@
 package me.gwatchlist.config;
 
+import com.googlecode.objectify.ObjectifyService;
+import me.gwatchlist.entities.MoviesList;
+import me.gwatchlist.entities.User;
+import me.gwatchlist.rservices.MovieListRService;
 import me.gwatchlist.rservices.UserRService;
 
 import javax.ws.rs.core.Application;
@@ -12,6 +16,11 @@ import java.util.Set;
  */
 public class RestRegisterer extends Application {
 
+    static {
+        ObjectifyService.register(User.class);
+        ObjectifyService.register(MoviesList.class);
+    }
+
     @Override
     public Set<Class<?>> getClasses() {
 
@@ -19,6 +28,7 @@ public class RestRegisterer extends Application {
 
         // Register REST Services
         classes.add(UserRService.class);
+        classes.add(MovieListRService.class);
 
         return classes;
     }

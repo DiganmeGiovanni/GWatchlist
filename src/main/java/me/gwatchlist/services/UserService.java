@@ -1,6 +1,5 @@
 package me.gwatchlist.services;
 
-import com.googlecode.objectify.ObjectifyService;
 import me.gwatchlist.entities.User;
 import me.gwatchlist.entities.UserPreferences;
 
@@ -13,10 +12,6 @@ import static com.googlecode.objectify.ObjectifyService.ofy;
  * Created by giovanni on 11/09/16.
  */
 public class UserService {
-
-    static {
-        ObjectifyService.register(User.class);
-    }
 
     public User login(String email, String name) {
 
