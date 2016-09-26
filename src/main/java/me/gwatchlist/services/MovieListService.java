@@ -2,6 +2,7 @@ package me.gwatchlist.services;
 
 import com.googlecode.objectify.ObjectifyService;
 import me.gwatchlist.beans.ListsNames;
+import me.gwatchlist.entities.Movie;
 import me.gwatchlist.entities.MoviesList;
 import me.gwatchlist.entities.User;
 
@@ -132,5 +133,22 @@ public class MovieListService {
         else {
             return 404;
         }
+    }
+
+    public int addMovie(Long listId, Movie movie) {
+
+        // Retrieve movie list from data store
+        MoviesList moviesList = ofy().load()
+                .type(MoviesList.class)
+                .id(listId)
+                .now();
+
+        if (moviesList != null) {
+            moviesList.getMovies().add(movie);
+            ofy().save().entity(moviesList);
+            return 201;
+        }
+
+        return 404;
     }
 }

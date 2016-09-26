@@ -1,7 +1,5 @@
 package me.gwatchlist.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import java.util.List;
 
 /**
@@ -15,14 +13,14 @@ public class Movie {
     private String synopsis;
     private String youtubeTrailerId;
     private String posterPath;
-    private String releaseDate;
-    private String voteAverage;
+    //private String releaseDate;
+    private float voteAverage;
     private List<String> genres;
     private List<String> directors;
 
     private String addedByEmail;
     private String addedByName;
-    private String addedAt;
+    //private String addedAt;
 
     private boolean watched;
     private boolean active;
@@ -68,19 +66,19 @@ public class Movie {
         this.posterPath = posterPath;
     }
 
-    public String getReleaseDate() {
+    /*public String getReleaseDate() {
         return releaseDate;
-    }
+    }*/
 
-    public void setReleaseDate(String releaseDate) {
+    /*public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
-    }
+    }*/
 
-    public String getVoteAverage() {
+    public float getVoteAverage() {
         return voteAverage;
     }
 
-    public void setVoteAverage(String voteAverage) {
+    public void setVoteAverage(float voteAverage) {
         this.voteAverage = voteAverage;
     }
 
@@ -116,13 +114,13 @@ public class Movie {
         this.addedByName = addedByName;
     }
 
-    public String getAddedAt() {
+    /*public String getAddedAt() {
         return addedAt;
     }
 
     public void setAddedAt(String addedAt) {
         this.addedAt = addedAt;
-    }
+    }*/
 
     public boolean isWatched() {
         return watched;

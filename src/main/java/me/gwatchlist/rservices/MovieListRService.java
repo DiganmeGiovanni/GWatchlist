@@ -89,6 +89,7 @@ public class MovieListRService {
     @Path("list/{list_id}/movie")
     public Response addMovie(@PathParam("list_id") Long listId, Movie movie) {
 
-        return Response.status(201).entity(movie).build();
+        int responseCode = moviesListService.addMovie(listId, movie);
+        return Response.status(responseCode).build();
     }
 }
