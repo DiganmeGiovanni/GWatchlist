@@ -71,7 +71,7 @@
         </dependency>
 
 
-        <!-- Objetify dependency -->
+        <!-- Objectify dependency -->
         <dependency>
             <groupId>com.googlecode.objectify</groupId>
             <artifactId>objectify</artifactId>
