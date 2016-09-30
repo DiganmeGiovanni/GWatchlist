@@ -26,6 +26,9 @@ public class RestRegisterer extends Application {
 
         Set<Class<?>> classes = new HashSet<Class<?>>();
 
+        // Register CORS filter class
+        classes.add(CORSFilter.class);
+
         // Register REST Services
         classes.add(UserRService.class);
         classes.add(MovieListRService.class);

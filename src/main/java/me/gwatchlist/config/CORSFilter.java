@@ -23,5 +23,6 @@ public class CORSFilter implements ContainerResponseFilter {
         response.getHeaders().add("Access-Control-Allow-Methods",
                 "GET, POST, PUT, DELETE, OPTIONS, HEAD");
 
+        System.out.println("Applying CORS Filter");
     }
 }

@@ -17,10 +17,6 @@ import static com.googlecode.objectify.ObjectifyService.ofy;
  */
 public class MovieListService {
 
-    static {
-        ObjectifyService.register(User.class);
-    }
-
     public MoviesList createList(String name, String ownerEmail) {
 
         // Check if user yet has a list with same name

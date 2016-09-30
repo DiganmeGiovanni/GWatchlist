@@ -20,6 +20,7 @@ public class UserRService {
     public User login(@QueryParam("email") String email,
             @QueryParam("name") String name) {
 
+        System.out.println("Receiving login request");
         return userService.login(email, name);
     }
 
