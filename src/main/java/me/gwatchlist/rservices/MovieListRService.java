@@ -1,6 +1,6 @@
 package me.gwatchlist.rservices;
 
-import me.gwatchlist.beans.ListsNames;
+import me.gwatchlist.beans.ListWrapper;
 import me.gwatchlist.entities.Movie;
 import me.gwatchlist.entities.MoviesList;
 import me.gwatchlist.services.MovieListService;
@@ -8,6 +8,7 @@ import me.gwatchlist.services.MovieListService;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.List;
 
 /**
  *
@@ -53,9 +54,9 @@ public class MovieListRService {
     @Produces(MediaType.APPLICATION_JSON)
     @GET
     @Path("lists")
-    public ListsNames getListsNames(@QueryParam("owner_email") String ownerEmail) {
+    public List<ListWrapper> getLists(@QueryParam("owner_email") String ownerEmail) {
 
-        return moviesListService.getListsNames(ownerEmail);
+        return moviesListService.getLists(ownerEmail);
     }
 
     @Produces(MediaType.APPLICATION_JSON)

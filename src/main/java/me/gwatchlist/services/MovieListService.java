@@ -1,11 +1,10 @@
 package me.gwatchlist.services;
 
-import com.googlecode.objectify.ObjectifyService;
-import me.gwatchlist.beans.ListsNames;
+import me.gwatchlist.beans.ListWrapper;
 import me.gwatchlist.entities.Movie;
 import me.gwatchlist.entities.MoviesList;
-import me.gwatchlist.entities.User;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -60,22 +59,33 @@ public class MovieListService {
         return null;
     }
 
-    public ListsNames getListsNames(String ownerEmail) {
+    public List<ListWrapper> getLists(String ownerEmail) {
 
-        List<MoviesList> moviesLists = ofy().load()
+        // Movies created by user
+        List<MoviesList> lists = ofy().load()
                 .type(MoviesList.class)
                 .filter("ownerEmail", ownerEmail)
                 .list();
 
-        List<MoviesList> moviesListsShared = ofy().load()
+        // Movies shared with user
+        lists.addAll(ofy().load()
                 .type(MoviesList.class)
                 .filter("sharedWith", ownerEmail)
-                .list();
+                .list());
 
-        ListsNames listsNames = new ListsNames(ownerEmail);
-        listsNames.addMoviesLists(moviesLists);
-        listsNames.addMoviesLists(moviesListsShared);
-        return listsNames;
+        List<ListWrapper> wrappers = new ArrayList<ListWrapper>();
+        for (MoviesList list : lists) {
+            ListWrapper wrapper = new ListWrapper();
+            wrapper.setListId(list.getId());
+            wrapper.setName(list.getName());
+            wrapper.setOwnerEmail(list.getOwnerEmail());
+            wrapper.setPersonal(list.isPersonalList());
+            wrapper.setSharedWith(list.getSharedWith());
+
+            wrappers.add(wrapper);
+        }
+
+        return wrappers;
     }
 
     public MoviesList getPersonalList(String ownerEmail) {
