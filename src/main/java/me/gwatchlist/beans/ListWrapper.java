@@ -8,7 +8,7 @@ import java.util.List;
  */
 public class ListWrapper {
 
-    private Long listId;
+    private Long id;
     private String name;
     private String ownerEmail;
     private boolean personal;
@@ -24,12 +24,12 @@ public class ListWrapper {
     private List<String> sharedWith;
 
 
-    public Long getListId() {
-        return listId;
+    public Long getId() {
+        return id;
     }
 
-    public void setListId(Long listId) {
-        this.listId = listId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {

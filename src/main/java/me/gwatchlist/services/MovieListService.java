@@ -76,7 +76,7 @@ public class MovieListService {
         List<ListWrapper> wrappers = new ArrayList<ListWrapper>();
         for (MoviesList list : lists) {
             ListWrapper wrapper = new ListWrapper();
-            wrapper.setListId(list.getId());
+            wrapper.setId(list.getId());
             wrapper.setName(list.getName());
             wrapper.setOwnerEmail(list.getOwnerEmail());
             wrapper.setPersonal(list.isPersonalList());
