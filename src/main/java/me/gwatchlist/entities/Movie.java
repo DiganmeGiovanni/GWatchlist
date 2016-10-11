@@ -11,9 +11,8 @@ public class Movie {
     private String tmdbId;
     private String title;
     private String synopsis;
-    private String youtubeTrailerId;
     private String posterPath;
-    //private String releaseDate;
+    private String releaseDate;
     private float voteAverage;
     private List<String> genres;
     private List<String> directors;
@@ -50,14 +49,6 @@ public class Movie {
         this.synopsis = synopsis;
     }
 
-    public String getYoutubeTrailerId() {
-        return youtubeTrailerId;
-    }
-
-    public void setYoutubeTrailerId(String youtubeTrailerId) {
-        this.youtubeTrailerId = youtubeTrailerId;
-    }
-
     public String getPosterPath() {
         return posterPath;
     }
@@ -66,13 +57,13 @@ public class Movie {
         this.posterPath = posterPath;
     }
 
-    /*public String getReleaseDate() {
+    public String getReleaseDate() {
         return releaseDate;
-    }*/
+    }
 
-    /*public void setReleaseDate(String releaseDate) {
+    public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
-    }*/
+    }
 
     public float getVoteAverage() {
         return voteAverage;
