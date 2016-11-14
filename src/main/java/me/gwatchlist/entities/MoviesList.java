@@ -48,6 +48,24 @@ public class MoviesList {
         return false;
     }
 
+    /**
+     * Retrieves the index of given movie in this list
+     * movies
+     * @param tmdbId The movie database id of movie to look for
+     * @return Index of movie in list or -1
+     */
+    public int getMovieIndex(String tmdbId) {
+        int movieIndex = -1;
+        for (int i = 0; i < this.getMovies().size(); i++) {
+            if (this.getMovies().get(i).getTmdbId().equals(tmdbId)) {
+                movieIndex = i;
+                break;
+            }
+        }
+
+        return movieIndex;
+    }
+
     ////////////////////////////////////////////////////////////////////////////
 
     public Long getId() {

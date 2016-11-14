@@ -93,4 +93,24 @@ public class MovieListRService {
         int responseCode = moviesListService.addMovie(listId, movie);
         return Response.status(responseCode).build();
     }
+
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @PUT
+    @Path("list/{list_id}/movie")
+    public Response updateMovie(@PathParam("list_id") Long listId, Movie movie) {
+
+        int responseCode = moviesListService.updateMovie(listId, movie);
+        return Response.status(responseCode).build();
+    }
+
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @DELETE
+    @Path("list/{list_id}/movie")
+    public Response deleteMovie(@PathParam("list_id") Long listId, Movie movie) {
+
+        int responseCode = moviesListService.deleteMovie(listId, movie);
+        return Response.status(responseCode).build();
+    }
 }

@@ -33,7 +33,7 @@ public class MovieListService {
         return list;
     }
 
-    public MoviesList findUserList(String name, String ownerEmail) {
+    private MoviesList findUserList(String name, String ownerEmail) {
 
         return ofy().load()
                 .type(MoviesList.class)
@@ -153,6 +153,53 @@ public class MovieListService {
             moviesList.getMovies().add(movie);
             ofy().save().entity(moviesList);
             return 201;
+        }
+
+        return 404;
+    }
+
+    public int updateMovie(Long listId, Movie movie) {
+
+        // Retrieve movie list from data store
+        MoviesList moviesList = ofy().load()
+                .type(MoviesList.class)
+                .id(listId)
+                .now();
+
+        if (moviesList != null) {
+
+            // Retrieve movie from list
+            int movieIndex = moviesList.getMovieIndex(movie.getTmdbId());
+
+            if (movieIndex >= 0) {
+                moviesList.getMovies().remove(movieIndex);
+                moviesList.getMovies().add(movieIndex, movie);
+                ofy().save().entity(moviesList);
+                return 204;
+            }
+        }
+
+        return 404;
+    }
+
+    public int deleteMovie(Long listId, Movie movie) {
+
+        // Retrieve movie list from data store
+        MoviesList moviesList = ofy().load()
+                .type(MoviesList.class)
+                .id(listId)
+                .now();
+
+        if (moviesList != null) {
+
+            // Retrieve movie from list
+            int movieIndex = moviesList.getMovieIndex(movie.getTmdbId());
+
+            if (movieIndex >= 0) {
+                moviesList.getMovies().remove(movieIndex);
+                ofy().save().entity(moviesList);
+                return 204;
+            }
         }
 
         return 404;
