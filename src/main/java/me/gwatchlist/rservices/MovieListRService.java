@@ -51,6 +51,13 @@ public class MovieListRService {
         return Response.status(201).entity(list).build();
     }
 
+    @DELETE
+    @Path("list/{list_id}")
+    public Response deleteList(@PathParam("list_id") Long listId) {
+        int responseCode = moviesListService.deleteList(listId);
+        return Response.status(responseCode).build();
+    }
+
     @Produces(MediaType.APPLICATION_JSON)
     @GET
     @Path("lists")

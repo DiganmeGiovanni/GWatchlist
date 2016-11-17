@@ -33,6 +33,25 @@ public class MovieListService {
         return list;
     }
 
+    public int deleteList(Long listId) {
+
+        MoviesList moviesList = ofy().load()
+                .type(MoviesList.class)
+                .id(listId)
+                .now();
+
+        if (moviesList != null) {
+            if (moviesList.isPersonalList()) {
+                return 409;
+            }
+
+            ofy().delete().entity(moviesList);
+            return 204;
+        }
+
+        return 404;
+    }
+
     private MoviesList findUserList(String name, String ownerEmail) {
 
         return ofy().load()
