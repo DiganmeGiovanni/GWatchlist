@@ -1,6 +1,7 @@
 package me.gwatchlist.rservices;
 
 import me.gwatchlist.entities.User;
+import me.gwatchlist.entities.UserPreferences;
 import me.gwatchlist.services.UserService;
 
 import javax.ws.rs.*;
@@ -20,23 +21,15 @@ public class UserRService {
     public User login(@QueryParam("email") String email,
             @QueryParam("name") String name) {
 
-        System.out.println("Receiving login request");
         return userService.login(email, name);
     }
 
+    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @POST
-    @Path("preferences")
-    public User updatePreferences(@FormParam("email") String email,
-                                  @FormParam("notifyOnListShared") boolean notifyOnListShared,
-                                  @FormParam("notifyOnMovieAdded") boolean notifyOnMovieAdded,
-                                  @FormParam("theme") String theme) {
-        return userService.updatePreferences(
-                email,
-                notifyOnListShared,
-                notifyOnMovieAdded,
-                theme
-        );
+    @Path("{userId}/preferences")
+    public User updatePreferences(@PathParam("userId") Long userId, UserPreferences userPreferences) {
+        return userService.updatePreferences(userId, userPreferences);
     }
 }
 
