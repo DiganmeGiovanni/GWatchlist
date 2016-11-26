@@ -6,10 +6,10 @@ package me.gwatchlist.entities;
  */
 public class UserPreferences {
 
-    public static final String THEME_DARK_BLUE = "DARK_BLUE";
-    public static final String THEME_DARK_PINK = "DARK_PINK";
-    public static final String THEME_GRADIENT_BLUE = "GRADIENT._BLUE";
-    public static final String THEME_GRADIENT_PINK = "GRADIENT_PINK";
+    public static final String THEME_DARK_BLUE = "BLUE_DARK";
+    public static final String THEME_DARK_PINK = "PINK_DARK";
+    public static final String THEME_GRADIENT_BLUE = "GRADIENT_BLUE_DARK";
+    public static final String THEME_GRADIENT_PINK = "GRADIENT_PINK_DARK";
 
     private boolean notifyOnMovieAdded;
     private boolean notifyOnListShared;
