@@ -1,7 +1,10 @@
-App Engine Java Application
-Copyright (C) 2010-2012 Google Inc.
+# GWatchlist
+This is the backend for GWatchlist web and android clients
 
-## Skeleton application for use with App Engine Java.
+## Technical documentation
+Check the [API Documentation](./APIDocumentation.md) to implement this backend
+
+## GWatchlist technical guide
 
 Requires [Apache Maven](http://maven.apache.org) 3.0 or greater, and JDK 6+ in order to run.
 
