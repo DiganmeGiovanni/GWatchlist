@@ -34,3 +34,19 @@ Returns an `User` entity with its preferences
       }
     }
 ```
+
+### POST /api/user/{userId}/preferences
+
+#### Post body
+Receives a `UserPreferences` object in `JSON` format. 
+```json
+    {
+      "notifyOnListShared": true,
+      "notifyOnMovieAdded": true,
+      "theme": "DARK_PINK"
+    }
+```
+
+#### Response
+Returns an **empty** response with `204` code if all goes ok.
+
