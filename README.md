@@ -2,7 +2,7 @@
 This is the backend for GWatchlist web and android clients
 
 ## Technical documentation
-Check the [API Documentation](./APIDocumentation.md) to implement this backend
+Check the [API Documentation](docs/APIDocumentation.md) to implement this backend
 
 ## GWatchlist technical guide
 
