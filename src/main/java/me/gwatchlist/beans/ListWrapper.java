@@ -12,15 +12,6 @@ public class ListWrapper {
     private String name;
     private String ownerEmail;
     private boolean personal;
-
-    public boolean isPersonal() {
-        return personal;
-    }
-
-    public void setPersonal(boolean personal) {
-        this.personal = personal;
-    }
-
     private List<String> sharedWith;
 
 
@@ -46,6 +37,14 @@ public class ListWrapper {
 
     public void setOwnerEmail(String ownerEmail) {
         this.ownerEmail = ownerEmail;
+    }
+
+    public boolean isPersonal() {
+        return personal;
+    }
+
+    public void setPersonal(boolean personal) {
+        this.personal = personal;
     }
 
     public List<String> getSharedWith() {

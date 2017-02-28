@@ -21,11 +21,9 @@ public class MovieListRService {
 
     @Produces(MediaType.APPLICATION_JSON)
     @GET
-    @Path("list")
-    public Response getList(@QueryParam("owner_email") String ownerEmail,
-                            @QueryParam("list_id") Long listId) {
-
-        MoviesList list = moviesListService.findUserList(listId, ownerEmail);
+    @Path("list/{list_id}")
+    public Response getList(@PathParam("list_id") Long listId) {
+        MoviesList list = moviesListService.findUserList(listId);
         if (list == null) {
 
             // Movie list not exists
@@ -40,7 +38,6 @@ public class MovieListRService {
     @Path("list")
     public Response createList(@FormParam("owner_email") String ownerEmail,
                                  @FormParam("name") String name) {
-
         MoviesList list = moviesListService.createList(name, ownerEmail);
         if (list == null) {
 
@@ -62,7 +59,6 @@ public class MovieListRService {
     @GET
     @Path("lists")
     public List<ListWrapper> getLists(@QueryParam("owner_email") String ownerEmail) {
-
         return moviesListService.getLists(ownerEmail);
     }
 
@@ -70,7 +66,6 @@ public class MovieListRService {
     @GET
     @Path("list/personal")
     public Response getPersonalList(@QueryParam("owner_email") String ownerEMail) {
-
         MoviesList list = moviesListService.getPersonalList(ownerEMail);
         if (list == null) {
 
@@ -83,10 +78,9 @@ public class MovieListRService {
 
     @Produces(MediaType.APPLICATION_JSON)
     @POST
-    @Path("list/share")
-    public Response shareList(@FormParam("list_id") Long listId,
+    @Path("list/{list_id}/share")
+    public Response shareList(@PathParam("list_id") Long listId,
                               @FormParam("email") String email) {
-
         int responseCode = moviesListService.shareList(listId, email);
         return Response.status(responseCode).build();
     }
@@ -96,7 +90,6 @@ public class MovieListRService {
     @POST
     @Path("list/{list_id}/movie")
     public Response addMovie(@PathParam("list_id") Long listId, Movie movie) {
-
         int responseCode = moviesListService.addMovie(listId, movie);
         return Response.status(responseCode).build();
     }
@@ -106,7 +99,6 @@ public class MovieListRService {
     @PUT
     @Path("list/{list_id}/movie")
     public Response updateMovie(@PathParam("list_id") Long listId, Movie movie) {
-
         int responseCode = moviesListService.updateMovie(listId, movie);
         return Response.status(responseCode).build();
     }
@@ -116,7 +108,6 @@ public class MovieListRService {
     @DELETE
     @Path("list/{list_id}/movie")
     public Response deleteMovie(@PathParam("list_id") Long listId, Movie movie) {
-
         int responseCode = moviesListService.deleteMovie(listId, movie);
         return Response.status(responseCode).build();
     }

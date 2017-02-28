@@ -62,20 +62,11 @@ public class MovieListService {
                 .now();
     }
 
-    public MoviesList findUserList(Long id, String ownerEmail) {
-
-        MoviesList moviesList = ofy().load()
+    public MoviesList findUserList(Long id) {
+        return ofy().load()
                 .type(MoviesList.class)
                 .id(id)
                 .now();
-
-        if (moviesList != null) {
-            if (moviesList.getOwnerEmail().compareTo(ownerEmail) == 0) {
-                return moviesList;
-            }
-        }
-
-        return null;
     }
 
     public List<ListWrapper> getLists(String ownerEmail) {
